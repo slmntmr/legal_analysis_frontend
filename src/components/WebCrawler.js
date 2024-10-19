@@ -1,84 +1,111 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import styles from '../styles/page.module.css';
 
 const WebCrawler = () => {
   const [url, setUrl] = useState('');
   const [result, setResult] = useState(null);
   const [isCrawling, setIsCrawling] = useState(false);
+  const [language, setLanguage] = useState('tr'); // Varsayılan dil Türkçe
 
-  // Tarama fonksiyonu
   const handleCrawl = async () => {
-    if (url.trim() === '') return; // Boş URL kontrolü
+    if (url.trim() === '') return;
     setIsCrawling(true);
+    setResult(null); // Önceki sonucu temizle
     try {
-      const response = await axios.get('http://localhost:8080/api/crawler/crawl', { params: { url } });
-      setResult(response.data || {});
+      const response = await fetch(`http://localhost:8080/api/crawler/crawl?url=${encodeURIComponent(url)}`, {
+        headers: {
+          "Accept-Language": language, // Dil parametresi
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `HTTP hatası! Durum: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setResult(data || {});
     } catch (error) {
-      console.error(error);
+      setResult({ error: error.message });
     } finally {
       setIsCrawling(false);
     }
   };
 
-  // Enter tuşuna basıldığında tetiklenecek fonksiyon
-  const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
-      handleCrawl();
+  // Dinamik çeviri fonksiyonu
+  const translateStatus = (status) => {
+    if (language === 'en') {
+      if (status === 'Hukuka Uygun') return 'Legally Compliant';
+      if (status === 'Metin Detaylı Düzenlenmelidir') return 'Text Needs Detailed Revision';
+      if (status === 'Metniniz Hukuka Uygun Değil') return 'Your Text is Not Legally Compliant';
     }
+    return status; // Eğer Türkçe ise orijinal durumu döndür
   };
-
-  useEffect(() => {
-    // Burada herhangi bir DOM manipülasyonu yapılacaksa, bileşen tamamen yüklendikten sonra yapılır
-    console.log('Bileşen yüklendi');
-  }, []); // Bu, bileşenin yalnızca bir kez yüklendiğinde çalışmasını sağlar.
 
   return (
     <div>
       <div className={styles.formGroup}>
         <input
           type="text"
-          placeholder="Web sitesi URL'sini girin"
+          placeholder={language === 'tr' ? "Web sitesi URL'sini girin" : "Enter website URL"}
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           className={styles.formInput}
-          onKeyDown={handleKeyPress}
         />
         <button
           onClick={handleCrawl}
           className={`${styles.formButton} ${isCrawling ? 'taranıyor' : ''}`}
           disabled={isCrawling}
         >
-          {isCrawling ? 'Taranıyor...' : 'Tara'}
+          {isCrawling ? (language === 'tr' ? 'Taranıyor...' : 'Crawling...') : (language === 'tr' ? 'Tara' : 'Crawl')}
         </button>
       </div>
 
+      {/* Dil Seçimi */}
+      <div>
+        <label htmlFor="language-select">{language === 'tr' ? 'Dil Seçin:' : 'Select Language:'}</label>
+        <select
+          id="language-select"
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      {/* Hata Mesajı veya Sonuç */}
       {result && (
         <div>
-          {/* Skor ve Durum Kartı */}
-          <div className={styles.card}>
-            <h4>Analiz Sonuçları</h4>
-            <p><strong>Score:</strong> {result.score || 'Bilgi yok'}</p>
-            <p><strong>Durum:</strong> {result.durum || 'Bilgi yok'}</p>
-          </div>
+          {result.error ? (
+            <div className={styles.errorMessage}>
+              <p>{result.error}</p>
+            </div>
+          ) : (
+            <div className={styles.card}>
+              <h4>{language === 'tr' ? 'Analiz Sonuçları' : 'Analysis Results'}</h4>
+              <p><strong>{language === 'tr' ? 'Skor' : 'Score'}:</strong> {result.score || (language === 'tr' ? 'Bilgi yok' : 'No data')}</p>
+              <p><strong>{language === 'tr' ? 'Durum' : 'Status'}:</strong> {translateStatus(result.durum) || (language === 'tr' ? 'Bilgi yok' : 'No data')}</p>
+            </div>
+          )}
 
-          {/* Analiz Sonuç Kartları */}
           {result.missingKeywords && Object.entries(result.missingKeywords).map(([title, keywords], index) => (
             <div key={index} className={styles.card}>
               <h4 className={keywords.length === 0 ? styles.success : styles.negative}>
                 {title}
               </h4>
               <p className={styles.shortSuggestion}>
-                {keywords.length === 0 ? 'Eksik kelime yok.' : keywords.join(', ')}
+                {keywords.length === 0
+                  ? (language === 'tr' ? 'Eksik kelime yok.' : 'No missing keywords.')
+                  : keywords.join(', ')}
               </p>
             </div>
           ))}
 
-          {/* Öneri Kartı */}
           {result.suggestions && (
             <div className={styles.card}>
-              <h4 className={styles.success}>aiAnalysis - Öneri</h4>
-              <p>{result.suggestions.aiAnalysis.replace(/[*]/g, '') || 'Öneri bulunamadı.'}</p>
+              <h4 className={styles.success}>{language === 'tr' ? 'aiAnalysis - Öneri' : 'aiAnalysis - Suggestion'}</h4>
+              <p>{result.suggestions.aiAnalysis.replace(/[*]/g, '') || (language === 'tr' ? 'Öneri bulunamadı.' : 'No suggestions available.')}</p>
             </div>
           )}
         </div>
