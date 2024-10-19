@@ -16,7 +16,7 @@ const HomePage = () => {
 
       {/* Verbis Kontrol Bölümü */}
       <section className={styles.section}>
-        <h1>Verbis Kontrol</h1>
+        <h1>Etbis Kontrol</h1>
 
          <VerbisChecker />
          

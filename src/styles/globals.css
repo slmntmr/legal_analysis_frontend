@@ -39,6 +39,10 @@ p {
   padding: 20px 0;
   text-align: center;
 }
+.contact-info i {
+  margin-right: 8px;
+  color: #bebc0eb7;
+}
 
 /* Global input ve button stili */
 input {
