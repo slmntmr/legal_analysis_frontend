@@ -17,17 +17,29 @@
   margin-bottom: 30px;
 }
 
-.formInput {
+.formGroup {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px; /* Alt boşluk artırıldı */
+  max-width: 600px; /* Maksimum genişliği ayarlıyoruz */
+}
+
+.formInput {
+  flex: 1; /* Input genişliğini dolduracak */
+  padding: 10px; /* Padding daraltıldı */
+  margin-right: 10px; /* Input ve buton arasına boşluk ekliyoruz */
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  transition: background-color 0.3s ease; /* Renk geçişi animasyonu */
 }
 
+.formInput:hover {
+  background-color: #e9f5ff; /* Hover sırasında arka plan rengi değişiyor */
+}
 .formButton {
-  padding: 12px 25px; /* Buton boyutu büyütüldü */
+  height: 40px; /* Butonun yüksekliğini doğrudan belirliyoruz */
+  padding: 0 30px; /* Yatay padding ayarlandı */
   background-color: #007bff;
   color: white;
   border: none;
@@ -35,10 +47,20 @@
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Hover durumuna geçiş animasyonu */
+  display: flex;
+  align-items: center; /* Metni buton içinde dikey olarak ortalıyoruz */
+  justify-content: center; /* Metni buton içinde yatay olarak ortalıyoruz */
+  line-height: normal; /* Line-height varsayılan yapıldı */
 }
 
+
 .formButton:hover {
-  background-color: #0056b3;
+  background-color: #800080; /* Mor renk hover durumu */
+}
+
+.formButton.taranıyor {
+  background-color: #28a745 !important; /* Tarama sırasında yeşil renk */
+  cursor: not-allowed; /* Tarama sırasında buton devre dışı */
 }
 
 /* Kartlar için temel stil */
@@ -57,7 +79,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Hover'da daha belirgin gölge */
 }
 
-/* Başlık ve onay işaretleri */
 .card h4 {
   font-size: 1.3rem;
   font-weight: bold;
@@ -77,9 +98,12 @@
 .card p {
   margin-top: 10px;
   color: #555;
-  font-size: 1rem; /* Yazı boyutu büyütüldü */
-  line-height: 1.5; /* Satır arası boşluk */
+  font-size: 1rem;
+  line-height: 1.5;
 }
+
+
+
 
 /* Kısa Öneri bölümü */
 .short-suggestion {
