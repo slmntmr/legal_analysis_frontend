@@ -1,0 +1,84 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 60px; /* Bölümler arasında boşluk */
+  width: 30%;
+  min-height: 30vh;
+  box-sizing: border-box;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 700px; /* Kart genişliği */
+  margin-bottom: 20px; /* Form ve içerikler arasında boşluk */
+}
+.formInput {
+  flex: 1;
+  padding: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 20px;
+  width: 2000px; /* Genişliği yüzdeye ayarladık */
+  box-sizing: border-box; /* Padding ve sınırlar genişlik hesaplamasına dahil edilir */
+}
+
+
+.formInput:hover {
+  background-color: #e9f5ff;
+}
+
+.formButton {
+  padding: 0 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formButton:hover {
+  background-color: #800080;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.resultCard {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resultCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.resultCard h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.resultCard pre {
+  margin-top: 10px;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}

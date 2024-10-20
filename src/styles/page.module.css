@@ -5,6 +5,9 @@
   justify-content: center;
   padding: 20px;
   gap: 40px; /* Web Tarayıcı ve Verbis Kontrol arasında boşluk */
+  width: 100%; /* Tam genişlik */
+  min-height: 100vh; /* Ekranın tamamını kapsayacak şekilde yüksekliği ayarla */
+  box-sizing: border-box; /* İç boşluklar sayfa boyutunu bozmasın diye */
 }
 
 .section {
@@ -17,16 +20,26 @@
   margin-bottom: 30px;
 }
 
+/* Kırmızı hata mesajı */
+.errorMessage {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Input ve Buton'u tam genişlikte hizalama */
 .formGroup {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 600px; /* Maksimum genişliği ayarlıyoruz */
+  max-width: 700px; /* Kartın genişliğini biraz arttırıyoruz */
+  margin-bottom: 20px; /* Form ve altındaki içerikler arasında boşluk */
 }
 
 .formInput {
-  flex: 1; /* Input genişliğini dolduracak */
-  padding: 10px; /* Padding daraltıldı */
+  flex: 1;
+  padding: 10px;
   margin-right: 10px; /* Input ve buton arasına boşluk ekliyoruz */
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -37,9 +50,9 @@
 .formInput:hover {
   background-color: #e9f5ff; /* Hover sırasında arka plan rengi değişiyor */
 }
+
 .formButton {
-  height: 40px; /* Butonun yüksekliğini doğrudan belirliyoruz */
-  padding: 0 30px; /* Yatay padding ayarlandı */
+  padding: 0 30px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -48,11 +61,11 @@
   cursor: pointer;
   transition: background-color 0.3s ease; /* Hover durumuna geçiş animasyonu */
   display: flex;
-  align-items: center; /* Metni buton içinde dikey olarak ortalıyoruz */
-  justify-content: center; /* Metni buton içinde yatay olarak ortalıyoruz */
-  line-height: normal; /* Line-height varsayılan yapıldı */
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  height: 42px;
 }
-
 
 .formButton:hover {
   background-color: #800080; /* Mor renk hover durumu */
@@ -101,9 +114,6 @@
   font-size: 1rem;
   line-height: 1.5;
 }
-
-
-
 
 /* Kısa Öneri bölümü */
 .short-suggestion {
