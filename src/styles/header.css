@@ -1,0 +1,52 @@
+/* Header genel stiller */
+.header {
+  background-color: #0022aa; /* Koyu mavi arka plan */
+  color: white; /* Başlık rengi */
+  padding: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SVG örümcek ağı için animasyon */
+@keyframes rotateSpiderWeb {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Örümcek ağı SVG stili */
+.spider-web-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.3; /* Daha hafif görünüm */
+}
+
+.spider-web {
+  width: 100%;
+  height: 100%;
+  animation: rotateSpiderWeb 20s linear infinite; /* Dönme animasyonu */
+}
+
+/* Başlık stili */
+.navbar-brand {
+  position: relative;
+  font-size: 2.5em;
+  z-index: 1; /* Örümcek ağının üstünde kalması için */
+  text-align: center;
+}
+
+/* Konteynerin hizalanması */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}

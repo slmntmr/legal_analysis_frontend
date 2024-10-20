@@ -290,10 +290,10 @@ const Metinler = () => {
       newsletterSection: "Bulunmasına gerek yoktur.",
       paymentSection: "Bulunmasına gerek yoktur.",
       footerOrLegal: "Bulunmasına gerek yoktur.",
-      
+
     },
   ];
-  
+
   // İhtiyaç halinde diğer dosyalarda bu bileşeni kullanabilirsiniz.
 
   return (
