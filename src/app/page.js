@@ -6,7 +6,8 @@ import VerbisChecker from '../components/VerbisChecker'; // Verbis Kontrol bile�
 import pageStyles from '../styles/page.module.css'; // Sayfa için stil dosyası
 import metinlerStyles from '../styles/metinler.module.css'; // Metinler için stil dosyası
 import Metinler from '../components/metinler'; // Metinler bileşeni
-
+import ihlallerStyles from '../styles/ihlaller.module.css';
+import IhlalKategorileri from '../components/ihlaller';
 const HomePage = () => {
   return (
     <div className={pageStyles.mainContainer}>
@@ -25,6 +26,10 @@ const HomePage = () => {
       <section className={pageStyles.section}>
         <h1>Bilgiler</h1>
         <Metinler /> {/* Metinler bileşeni burada */}
+      </section>
+      <section className={pageStyles.section}>
+        <h1>KVKK Güncel Kanun ve Cezalar</h1>
+        <IhlalKategorileri /> 
       </section>
     </div>
   );

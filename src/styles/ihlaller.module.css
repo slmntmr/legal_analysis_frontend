@@ -1,0 +1,41 @@
+.container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Kartlar arasında eşit boşluk */
+    gap: 20px;
+    width: 100%; /* Sayfaya tam oturması için genişlik ayarı */
+  }
+  
+  .card {
+    flex: 1 1 calc(33.333% - 40px); /* Kartların %33 oranında yayılmasını sağla */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Kartlara biraz daha yuvarlatılmış kenarlar ekledim */
+    background-color: #f2b4b2; /* Arka plan rengi: açık turkuaz */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+    transition: background-color 0.3s ease; /* Hover animasyonu için */
+  }
+  
+  .card:hover {
+    background-color: #e76161; /* Hover efektinde biraz daha koyu arka plan */
+  }
+  
+  .ihlalKategorisi {
+    font-size: 1.5em;
+    color: #007BFF; /* Başlık rengini mavi yapalım */
+    margin-bottom: 10px;
+    font-weight: bold; /* Kalın başlık stili */
+  }
+  
+  .localParagraph {
+    margin: 5px 0;
+    color: #3b3b3be3; /* Metin rengi koyu gri */
+    font-size: 1em; /* Paragraf metni boyutu */
+    line-height: 1.6; /* Satır aralığını artırma */
+  }
+  
