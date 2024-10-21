@@ -43,7 +43,7 @@ const WebCrawler = () => {
     setResult(null); // Önceki sonucu temizle
 
     try {
-      const response = await fetch(`http://localhost:8080/api/crawler/crawl?url=${encodeURIComponent(url)}`, {
+      const response = await fetch(`${process.env.API_URL}/api/crawler/crawl?url=${encodeURIComponent(url)}`, {
         headers: {
           "Accept-Language": language, // Dil parametresi
         },
