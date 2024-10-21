@@ -36,10 +36,7 @@ const WebCrawler = () => {
         : 'Invalid URL format! Please enter a URL that starts with https:// or http://.'
       );
       return;
-    }
-
-    setErrorMessage(''); // Hata mesajını temizle
-    setIsCrawling(true);
+    }rawling(true);
     setResult(null); // Önceki sonucu temizle
 
     try {
@@ -62,6 +59,9 @@ const WebCrawler = () => {
       setIsCrawling(false);
     }
   };
+
+    setErrorMessage(''); // Hata mesajını temizle
+    setIsC
 
   // Dinamik çeviri fonksiyonu
   const translateStatus = (status) => {

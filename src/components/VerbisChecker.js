@@ -46,7 +46,7 @@ const VerbisChecker = () => {
       {/* Sonuç kartı */}
       {result && (
         <div className={styles.resultCard}>
-          <h4>Verbis Kontrol Sonuçları</h4>
+          <h4>Etbis Kontrol Sonucu</h4>
           <pre>{JSON.stringify(result, null, 2)}</pre>
         </div>
       )}

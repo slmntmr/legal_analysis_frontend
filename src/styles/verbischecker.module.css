@@ -4,9 +4,9 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
-  gap: 60px; /* Bölümler arasında boşluk */
-  width: 30%;
-  min-height: 30vh;
+  gap: 50px; /* Bölümler arasında boşluk */
+  width: 100%;
+  min-height: 20vh;
   box-sizing: border-box;
 }
 
@@ -24,6 +24,11 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
   height: 20px;
   width: 2000px; /* Genişliği yüzdeye ayarladık */
   box-sizing: border-box; /* Padding ve sınırlar genişlik hesaplamasına dahil edilir */
@@ -35,8 +40,9 @@
 }
 
 .formButton {
-  padding: 0 30px;
+  padding: 0 20px;
   background-color: #007bff;
+  height: 42px;
   color: white;
   border: none;
   border-radius: 6px;
