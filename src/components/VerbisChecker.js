@@ -1,4 +1,4 @@
-'use client'; // Bu bileşenin client-side olduğunu belirtiyoruz
+'use client'; // Bu bileşenin client-side olduğunu belirtiyoruz deneme yapıyoruz
 
 import React, { useState } from 'react';
 import axios from 'axios';
