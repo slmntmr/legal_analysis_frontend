@@ -32,11 +32,14 @@ const WebCrawler = () => {
     if (!isValidUrl(url)) {
       setErrorMessage(
         language === 'tr'
-        ? 'Geçersiz URL formatı! Lütfen https:// veya http:// ile başlayan bir URL girin.'
-        : 'Invalid URL format! Please enter a URL that starts with https:// or http://.'
+          ? 'Geçersiz URL formatı! Lütfen https:// veya http:// ile başlayan bir URL girin.'
+          : 'Invalid URL format! Please enter a URL that starts with https:// or http://.'
       );
       return;
-    }rawling(true);
+    }
+
+    setErrorMessage(''); // Hata mesajını temizle
+    setIsCrawling(true); // isCrawling state'ini true yap
     setResult(null); // Önceki sonucu temizle
 
     try {
@@ -56,12 +59,9 @@ const WebCrawler = () => {
     } catch (error) {
       setResult({ error: error.message });
     } finally {
-      setIsCrawling(false);
+      setIsCrawling(false); // Tarama bittiğinde tekrar false yap
     }
   };
-
-    setErrorMessage(''); // Hata mesajını temizle
-    setIsC
 
   // Dinamik çeviri fonksiyonu
   const translateStatus = (status) => {
