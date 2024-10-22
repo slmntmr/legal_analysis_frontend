@@ -4,51 +4,48 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  gap: 40px; /* Web Tarayıcı ve Verbis Kontrol arasında boşluk */
-  width: 100%; /* Tam genişlik */
-  min-height: 100vh; /* Ekranın tamamını kapsayacak şekilde yüksekliği ayarla */
-  box-sizing: border-box; /* İç boşluklar sayfa boyutunu bozmasın diye */
+  gap: 40px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .section {
   width: 100%;
-  max-width: 900px; /* Bölümlerin genişliği arttırıldı */
-  padding: 30px; /* İç boşluk arttırıldı */
-  background-color: #f7f9fc; /* Daha açık bir arka plan rengi */
+  max-width: 900px;
+  padding: 30px;
+  background-color: #f7f9fc;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   margin-bottom: 30px;
 }
 
-/* Kırmızı hata mesajı */
 .errorMessage {
   color: red;
   font-weight: bold;
   margin-top: 10px;
 }
 
-
-/* Input ve Buton'u tam genişlikte hizalama */
 .formGroup {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 700px; /* Kartın genişliğini biraz arttırıyoruz */
-  margin-bottom: 20px; /* Form ve altındaki içerikler arasında boşluk */
+  max-width: 700px;
+  margin-bottom: 20px;
 }
 
 .formInput {
   flex: 1;
   padding: 10px;
-  margin-right: 10px; /* Input ve buton arasına boşluk ekliyoruz */
+  margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  transition: background-color 0.3s ease; /* Renk geçişi animasyonu */
+  transition: background-color 0.3s ease;
 }
 
 .formInput:hover {
-  background-color: #e9f5ff; /* Hover sırasında arka plan rengi değişiyor */
+  background-color: #e9f5ff;
 }
 
 .formButton {
@@ -59,7 +56,7 @@
   border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Hover durumuna geçiş animasyonu */
+  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,28 +65,58 @@
 }
 
 .formButton:hover {
-  background-color: #800080; /* Mor renk hover durumu */
+  background-color: #800080;
 }
 
 .formButton.taranıyor {
-  background-color: #28a745 !important; /* Tarama sırasında yeşil renk */
-  cursor: not-allowed; /* Tarama sırasında buton devre dışı */
+  background-color: #28a745 !important;
+  cursor: not-allowed;
 }
 
-/* Kartlar için temel stil */
+
+
+.analysisCard {
+  background-color: #eaff00; /* Arka plan rengi */
+  border: 1px solid #b9c60c;    /* Kenar rengi */
+  border-radius: 8px;        /* Köşe yuvarlama */
+  padding: 16px;             /* İç boşluk */
+  margin: 10px 0;            /* Dış boşluk */
+  box-shadow: 0 2px 4px rgba(255, 128, 0, 0.1); /* Gölge efekti */
+}
+
+.score {
+  color: #030302; /* Skor rengi */
+  font-weight: bold; /* Kalın yazı */
+}
+
+.statusLegallyCompliant {
+  color: #cb9b00; /* Hukuka Uygun durumu için yeşil */
+}
+
+.statusNeedsRevision {
+  color: #ffc107; /* Detaylı düzenlenmesi gereken durum için sarı */
+}
+
+.statusNotCompliant {
+  color: #ff0922; /* Hukuka uygun olmayan durum için kırmızı */
+}
+
+
+
+
 .card {
   border: 2px solid #e0e0e0;
-  border-radius: 10px; /* Daha yuvarlatılmış köşeler */
-  padding: 25px; /* İç boşluk arttırıldı */
+  border-radius: 10px;
+  padding: 25px;
   margin-bottom: 25px;
-  background-color: white;
+  background-color: rgb(176, 248, 238);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover durumunda animasyon */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Hover ile kart yukarı çıkıyor */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Hover'da daha belirgin gölge */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h4 {
@@ -97,56 +124,61 @@
   font-weight: bold;
   display: flex;
   align-items: center;
-  color: green;
+  color: rgb(193, 6, 0);
   margin-bottom: 10px;
 }
 
 .card h4::before {
-  content: '✔'; /* Onay işareti */
+  content: '✖';
   margin-right: 10px;
-  color: green;
+  color: rgb(254, 0, 0);
   font-size: 1.5rem;
 }
 
 .card p {
   margin-top: 10px;
-  color: #555;
+  color: #ff0000;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-/* Kısa Öneri bölümü */
-.short-suggestion {
-  font-weight: bold;
-  color: #333; /* Daha koyu renk */
-  margin-bottom: 10px; /* Öneri metni için alt boşluk eklendi */
+.card p .missing-keywords-label {
+  color: #8cff00e9 !important;
+  font-weight: bold !important;
 }
 
-/* Duruma göre renk değiştiren stil */
+
+
+
+.short-suggestion {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
 .negative h4 {
   color: red;
 }
 
 .negative h4::before {
-  content: '✖'; /* Hata işareti */
+  content: '✖';
   color: red;
   font-size: 1.5rem;
 }
 
-/* Öneri kartı için stil */
 .suggestion-card {
   border: 2px solid #007bff;
   border-radius: 10px;
   padding: 20px;
-  background-color: #eef5ff; /* Hafif mavi arka plan */
+  background-color: #eef5ff;
   margin-bottom: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .suggestion-card:hover {
-  transform: translateY(-5px); /* Hover ile kart yukarı çıkıyor */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Hover'da daha belirgin gölge */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .suggestion-card h4 {
@@ -161,4 +193,18 @@
   color: #333;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.missing-keywords {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+
+/* arka plan */
+.mainContainer {
+  background-image: url('/mavisu.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Sayfanın tamamını kaplasın */
 }
