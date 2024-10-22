@@ -1,0 +1,41 @@
+/* logo.module.css */
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1e5ba2f7;
+}
+
+.description {
+  font-size: 18px;
+  color: #666;
+  margin: 10px 0;
+}
+
+.features {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+}
+
+.featureItem {
+  font-size: 16px;
+  color: #444;
+  margin: 5px 0;
+}

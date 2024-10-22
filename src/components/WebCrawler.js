@@ -74,7 +74,10 @@ const WebCrawler = () => {
   };
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
+      
+       <img src="/logo.png" alt="Logo" class="logoImage" />
+      <h1>{language === 'tr' ? 'Web Tarayıcı' : 'Web Crawler'}</h1>
       <div className={styles.formGroup}>
         <input
           type="text"
@@ -98,7 +101,7 @@ const WebCrawler = () => {
         </div>
       )}
 
-      <div>
+      <div className={styles.languageSelect}>
         <label htmlFor="language-select">{language === 'tr' ? 'Dil Seçin:' : 'Select Language:'}</label>
         <select
           id="language-select"
@@ -111,29 +114,26 @@ const WebCrawler = () => {
       </div>
 
       {result && (
-    <div>
-    {result.error ? (
+        <div>
+          {result.error ? (
             <div className={styles.errorMessage}>
-                <p>{result.error}</p>
+              <p>{result.error}</p>
             </div>
-        ) : (
-          <div className={styles.analysisCard}>
-          <h4>{language === 'tr' ? 'Analiz Sonuçları' : 'Analysis Results'}</h4>
-          <p className={styles.score}>
-              <strong>{language === 'tr' ? 'Skor' : 'Score'}:</strong> {result.score || (language === 'tr' ? 'Bilgi yok' : 'No data')}
-          </p>
-          <p className={translateStatus(result.durum) === 'Legally Compliant' ? styles.statusLegallyCompliant :
-              translateStatus(result.durum) === 'Text Needs Detailed Revision' ? styles.statusNeedsRevision :
-              translateStatus(result.durum) === 'Your Text is Not Legally Compliant' ? styles.statusNotCompliant : ''}>
-              <strong>{language === 'tr' ? 'Durum' : 'Status'}:</strong> {translateStatus(result.durum) || (language === 'tr' ? 'Bilgi yok' : 'No data')}
-          </p>
-      </div>
-      
-        )}
-        
-
-
-
+          ) : (
+            <div className={styles.analysisCard}>
+              <h4>{language === 'tr' ? 'Analiz Sonuçları' : 'Analysis Results'}</h4>
+              <p className={styles.score}>
+                <strong>{language === 'tr' ? 'Skor' : 'Score'}:</strong> {result.score || (language === 'tr' ? 'Bilgi yok' : 'No data')}
+              </p>
+              <p className={
+                translateStatus(result.durum) === 'Legally Compliant' ? styles.statusLegallyCompliant :
+                translateStatus(result.durum) === 'Text Needs Detailed Revision' ? styles.statusNeedsRevision :
+                translateStatus(result.durum) === 'Your Text is Not Legally Compliant' ? styles.statusNotCompliant : ''
+              }>
+                <strong>{language === 'tr' ? 'Durum' : 'Status'}:</strong> {translateStatus(result.durum) || (language === 'tr' ? 'Bilgi yok' : 'No data')}
+              </p>
+            </div>
+          )}
 
           {result.missingKeywords && Object.entries(result.missingKeywords).map(([title, keywords], index) => (
             <div key={index} className={styles.card}>
@@ -143,19 +143,11 @@ const WebCrawler = () => {
               <p className={keywords.length === 0 ? styles.shortSuggestion : styles.missingKeywords}>
                 {keywords.length === 0
                   ? (language === 'tr' ? 'Eksik kelime yok.' : 'No missing keywords.')
-                  : <>
-                      <span className={styles.missingKeywordsLabel}>
-                        {language === 'tr' ? 'Eksik Kelimeler: ' : 'Missing Keywords: '}
-                      </span>
-                      {keywords.join(', ')}
-                    </>
+                  : <><span className={styles.missingKeywordsLabel}>{language === 'tr' ? 'Eksik Kelimeler: ' : 'Missing Keywords: '}</span>{keywords.join(', ')}</>
                 }
               </p>
             </div>
           ))}
-
-
-
 
           {result.suggestions && result.suggestions.aiAnalysis && (
             <div className={styles.card}>
